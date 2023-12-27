@@ -1,4 +1,4 @@
-import FileCard from "./components/cards/FileCard"
+
 import TextCard from "./components/cards/TextCard"
 
 function App() {
@@ -11,7 +11,6 @@ function App() {
 
           <TextCard />
 
-          <FileCard />
 
         </div>
 

@@ -1,9 +1,12 @@
+// Button.tsx
+import React from 'react';
 
-
-const Button: React.FC = () => {
-
-    return
-
+interface ButtonProps {
+  onClick: () => void;
 }
+
+const Button: React.FC<ButtonProps> = ({ onClick }) => {
+  return <button className='button' onClick={onClick}>ENVIAR</button>;
+};
 
 export default Button;
