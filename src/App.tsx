@@ -1,4 +1,5 @@
-import TextCard from "."
+import FileCard from "./components/cards/FileCard"
+import TextCard from "./components/cards/TextCard"
 
 function App() {
 
@@ -9,7 +10,9 @@ function App() {
         <div className="row">
 
           <TextCard />
-          
+
+          <FileCard />
+
         </div>
 
       </div>
