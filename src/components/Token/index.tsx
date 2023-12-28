@@ -1,5 +1,7 @@
 // TokenInput.tsx
+import { TextField } from '@mui/material';
 import React, { useState } from 'react';
+
 
 interface TokenInputProps {
   onTokenChange: (token: string) => void;
@@ -14,13 +16,21 @@ const TokenInput: React.FC<TokenInputProps> = ({ onTokenChange }) => {
     onTokenChange(novoToken);
   };
 
+
+
   return (
-      <input
-        className='textfield'
+      <TextField
+        label=" Token cadastrado * "
+
+        id="outlined-basic"
+        variant="outlined"
+
         type="text"
+
+        className="input"
+
         value={token}
         onChange={handleChange}
-        placeholder="Token cadastrado *"
       />
   );
 };

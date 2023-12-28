@@ -1,10 +1,13 @@
 // App.tsx
 import { useState } from 'react';
-import Telefone from '../../Telefone';
 import Factory from '../../../services/factory';
-import Button from '../../Button';
-import TokenInput from '../../TokenInput';
-import MsgInput from '../../MsgInput';
+import Token from '../../Token';
+import Telefone from '../../Telefone';
+import Mensagem from '../../Mensagem';
+import Botao from '../../Botao';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+
 
 function TextCard() {
     const [isNumeroValido, setIsNumeroValido] = useState<boolean>(false);
@@ -47,48 +50,33 @@ function TextCard() {
     };
 
     return (
-        <div className='card'>
+        <Container maxWidth="sm">
+            <Box display="grid" gridTemplateColumns="1fr 1fr" gap={2}>
+                <Box gridColumn="span 12">
+                    <h1>Teste de envio</h1>
+                </Box>
+                <Box gridColumn="span 6">
 
-            <div className='title'>
+                    <Token onTokenChange={handleTokenChange} />
 
-                <h1>Teste de envio</h1>
+                </Box>
+                <Box gridColumn="span 6">
 
-            </div>
+                    <Telefone onValidChange={handleValidChange} />
 
-            <div className='content'>
+                </Box>
+                <Box gridColumn="span 12">
 
-                <div className='row'>
+                    <Mensagem onMensagemChange={handleMensagemChange} />
 
-                    <div className='column'>
+                </Box>
+                <Box gridColumn="span 12" textAlign="right">
 
-                        <TokenInput onTokenChange={handleTokenChange} />
-
-                    </div>
-
-                    <div className='column'>
-
-                        <Telefone onValidChange={handleValidChange} />
-
-                    </div>
-
-                </div>
-
-                <div className='column'>
-
-                    <MsgInput onMensagemChange={handleMensagemChange} />
-
-                </div>
-
-            </div>
-
-
-            <div className='footer'>
-
-                <Button onClick={handleButtonClick} />
-
-            </div>
-
-        </div>
+                    <Botao onClick={handleButtonClick} />
+                    
+                </Box>
+            </Box>
+        </Container>
     );
 }
 

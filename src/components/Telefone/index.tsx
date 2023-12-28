@@ -1,6 +1,7 @@
 // Telefone.tsx
 import React, { useState } from 'react';
 import useValidaTelefone from './hook/useValidaTelefone';
+import { TextField } from '@mui/material';
 
 interface TelefoneProps {
   onValidChange: (isValid: boolean, numero: string) => void,
@@ -20,12 +21,18 @@ const Telefone: React.FC<TelefoneProps> = ({ onValidChange }) => {
   };
 
   return (
-      <input
-        className='textfield'
+      <TextField
+        label=" Número * "
+
+        id="outlined-basic"
+        variant="outlined"
+
         type="text"
+       
+        className="input"
+
         value={numero}
         onChange={handleChange}
-        placeholder="Número *"
       />
   );
 };

@@ -1,4 +1,5 @@
 // MensagemInput.tsx
+import { TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 interface MensagemInputProps {
@@ -15,12 +16,18 @@ const MsgInput: React.FC<MensagemInputProps> = ({ onMensagemChange }) => {
   };
 
   return (
-      <input
-        className='textfield'
+      <TextField
+        label=" Mensagem * "
+
+        id="outlined-basic"
+        variant="outlined"
+
         type="text"
+
+        className="input"
+        
         value={mensagem}
         onChange={handleChange}
-        placeholder="Mensagem *"
       />
   );
 };
