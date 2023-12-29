@@ -1,13 +1,11 @@
 // Arquivo.tsx
 import React from 'react';
 import { TextField } from '@mui/material';
-import useValidaArquivo from './hook/useValidaArquivo.tsx';
+import useValidaArquivo from '@/hooks/useValidaArquivo.tsx';
+import ArquivoDTO from '@/dtos/arquivo.dto';
 
-interface PropriedadeDaArquivo {
-  quandoArquivoAlerar: (aprovaArquivo: boolean, arquivo: File | null) => void;
-}
 
-const Arquivo: React.FC<PropriedadeDaArquivo> = ({ quandoArquivoAlerar }) => {
+const Arquivo: React.FC<ArquivoDTO> = ({ quandoArquivoAlerar }) => {
   const { aprovaArquivo, validaArquivo } = useValidaArquivo();
 
   const manipular = (event: React.ChangeEvent<HTMLInputElement>) => {

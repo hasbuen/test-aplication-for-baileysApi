@@ -2,14 +2,10 @@
 
 import React, { useState } from 'react';
 import { TextField } from '@mui/material';
-import useValidaMensagem from './hook/useValidaMensagem.tsx';
+import useValidaMensagem from '@/hooks/useValidaMensagem.tsx';
+import MensagemDTO from '@/dtos/mensagem.dto';
 
-interface PropriedadeDaMensagem {
-  quandoMensagemAlerar: (
-    aprovaMensagem: boolean, mensagem: string) => void;
-}
-
-const Mensagem: React.FC<PropriedadeDaMensagem> = ({ quandoMensagemAlerar }) => {
+const Mensagem: React.FC<MensagemDTO> = ({ quandoMensagemAlerar }) => {
   const [mensagem, setMensagem] = useState('');
   const { aprovaMensagem, validaMensagem } = useValidaMensagem();
 

@@ -1,17 +1,17 @@
 // App.tsx
 import { useState } from 'react';
 import Factory from '@/services/factory';
-import Token from '@/components/Token';
-import Telefone from '@/components/Telefone';
-import Arquivo from '@/components/Arquivo';
-import Botao from '@/components/Botao';
+import Token from '@/components/UI/Token';
+import Telefone from '@/components/UI/Telefone';
+import Arquivo from '@/components/UI/Arquivo';
+import Botao from '@/components/UI/Botao';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-function FileCard() {
+function FileForm() {
 
 
     const [tokenValidado, setRespostaToken] = useState<boolean>(false);
@@ -104,4 +104,4 @@ function FileCard() {
     );
 }
 
-export default FileCard;
+export default FileForm;

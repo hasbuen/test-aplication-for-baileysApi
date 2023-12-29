@@ -1,14 +1,11 @@
 // Telefone.tsx
 import React, { useState } from 'react';
-import useValidaTelefone from './hook/useValidaTelefone';
+import useValidaTelefone from '@/hooks/useValidaTelefone';
 import { TextField } from '@mui/material';
+import TelefoneDTO from '@/dtos/telefone.dto';
 
-interface PropriedadeDoTelefone {
-  quandoTelefoneAlterar: (
-    aprovaTelefone: boolean, telefone: string) => void,
-}
 
-const Telefone: React.FC<PropriedadeDoTelefone> = ({ quandoTelefoneAlterar }) => {
+const Telefone: React.FC<TelefoneDTO> = ({ quandoTelefoneAlterar }) => {
   const { aprovaTelefone, validaTelefone } = useValidaTelefone();
   const [telefone, setResposta] = useState('');
  

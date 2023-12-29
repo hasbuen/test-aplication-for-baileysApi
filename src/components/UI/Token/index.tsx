@@ -1,14 +1,11 @@
 // TokenInput.tsx
 import { TextField } from '@mui/material';
 import React, { useState } from 'react';
-import useValidaToken from './hook/useValidaToken';
+import useValidaToken from '@/hooks/useValidaToken';
+import TokenDTO from '@/dtos/token.dto';
 
 
-interface PropriedadeDoToken {
-  quandoTokenAlterar: (aprovaToken: boolean, token: string) => void;
-}
-
-const Token: React.FC<PropriedadeDoToken> = ({ quandoTokenAlterar }) => {
+const Token: React.FC<TokenDTO> = ({ quandoTokenAlterar }) => {
   const {aprovaToken, validaToken } = useValidaToken();
   const [token, setResposta] = useState('');
 

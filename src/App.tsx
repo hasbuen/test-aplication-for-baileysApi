@@ -1,6 +1,5 @@
 
-import TextCard from "@/components/cards/TextCard"
-import FileCard from "@/components/cards/FileCard"
+import { TextForm, FileForm } from "@/components/commons/cards"
 
 function App() {
 
@@ -10,9 +9,9 @@ function App() {
 
         <div className="row">
 
-          <TextCard />
+          <TextForm />
 
-          <FileCard />
+          <FileForm />
 
 
         </div>

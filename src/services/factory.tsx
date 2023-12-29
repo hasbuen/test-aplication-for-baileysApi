@@ -15,7 +15,6 @@ class Factory {
         headers.append('X_TOKEN', token);
         headers.append('Content-Type', 'application/json');
 
-        // Configurar opções da requisição
         const options: RequestInit = {
             method: 'POST',
             headers,
@@ -36,12 +35,10 @@ class Factory {
 
         const url = new URL(endpoint);
 
-        // Configurar parâmetros do corpo da requisição
         const formData = new FormData();
         formData.append('number', number);
         formData.append('medias', file);
 
-        // Configurar cabeçalhos da requisição
         const headers = new Headers();
         headers.append('X_TOKEN', token);
         headers.append('Content-Type', 'multipart/form-data');

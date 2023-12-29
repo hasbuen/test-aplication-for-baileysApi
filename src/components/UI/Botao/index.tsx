@@ -3,7 +3,6 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { green } from '@mui/material/colors';
-import SendIcon from '@mui/icons-material/Send';
 
 
 interface ButtonProps {
@@ -21,7 +20,7 @@ const BotaoCustomizado = styled(Button)<ButtonProps>({
 
 
 const Botao: React.FC<ButtonProps> = ({ onClick }) => {
-  return <BotaoCustomizado onClick={onClick} variant="contained" endIcon={<SendIcon/>}> ENVIAR </BotaoCustomizado>;
+  return <BotaoCustomizado onClick={onClick} variant="contained"> ENVIAR </BotaoCustomizado>;
 };
 
 export default Botao;

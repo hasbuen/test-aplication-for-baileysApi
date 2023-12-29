@@ -1,19 +1,13 @@
-// App.tsx
 import { useState } from 'react';
-import Factory from '@/services/factory';
-import Token from '@/components/Token';
-import Telefone from '@/components/Telefone';
-import Mensagem from '@/components/Mensagem';
-import Botao from '@/components/Botao';
+import { Token, Telefone, Mensagem, Botao } from '@/components/UI';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { TextFormController } from '@/utils';
 
-function TextCard() {
-
-
+function TextForm() {
     const [tokenValidado, setRespostaToken] = useState<boolean>(false);
     const [tokenPronto, setToken] = useState<string>('');
 
@@ -39,42 +33,25 @@ function TextCard() {
     };
 
     const enviarFormulario = async () => {
-        if (!tokenValidado) {
-            toast.warning('Token não fornecido.');
-            return;
-        }
+        const resultado = await TextFormController(
+            tokenValidado,
+            tokenPronto,
+            telefoneValidado,
+            telefonePronto,
+            mensagemValidada,
+            mensagemPronta
+        );
 
-        if (!telefoneValidado) {
-            toast.warning(`Telefone no formato inválido. Exemplo a seguir: 554533016606 `);
-            return;
-        }
+        if (typeof resultado === 'string')
+            toast.warning(resultado);
 
-        if (!mensagemValidada) {
-            toast.warning('Mensagem deve conter no máximo 255 caracteres.');
-            return;
-        }
-
-
-        try {
-            const factoryInstance = new Factory();
-            const confereEnvio = await factoryInstance.sendText(tokenPronto, telefonePronto, mensagemPronta);
-      
-            if (confereEnvio) {
-              toast.success('Mensagem enviada com sucesso!');
-            } else {
-              toast.error('Oops. Algo deu errado!');
-            }
-          } catch (error) {
-            console.error('Erro ao enviar mensagem:', error);
-            toast.error('Oops. Algo deu errado!');
-          }
-        };
+    };
 
     return (
         <Container maxWidth="sm">
             <Box display="grid" gridTemplateColumns="1fr 1fr" gap={2}>
                 <Box gridColumn="span 12">
-                    <h1>Teste de envio</h1>
+                    <h1>Teste de Envio</h1>
                 </Box>
                 <Box gridColumn="span 6">
 
@@ -103,4 +80,4 @@ function TextCard() {
     );
 }
 
-export default TextCard;
+export default TextForm;
