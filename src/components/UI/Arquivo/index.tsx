@@ -1,22 +1,26 @@
-// Arquivo.tsx
-import React from 'react';
-import { TextField } from '@mui/material';
+import React, { useState, useEffect } from 'react';
 import useValidaArquivo from '@/hooks/useValidaArquivo.tsx';
 import ArquivoDTO from '@/dtos/arquivo.dto';
 
-
 const Arquivo: React.FC<ArquivoDTO> = ({ quandoArquivoAlerar }) => {
-  const { aprovaArquivo, validaArquivo } = useValidaArquivo();
+  const { aprovaArquivo, setArquivo } = useValidaArquivo();
+  const [novoArquivo, setNovoArquivo] = useState<File | undefined>(undefined);
 
   const manipular = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const arquivo = event.target.files?.[0] || null;
+    const arquivoSelecionado = event.target.files?.[0];
 
-    validaArquivo(arquivo);
-    quandoArquivoAlerar(aprovaArquivo, arquivo);
+    setNovoArquivo(arquivoSelecionado);
   };
 
+  useEffect(() => {
+    if (novoArquivo) {
+      setArquivo(novoArquivo);
+      quandoArquivoAlerar(aprovaArquivo, novoArquivo);
+    }
+  }, [aprovaArquivo, novoArquivo, quandoArquivoAlerar, setArquivo]);
+
   return (
-    <TextField
+    <input
       type="file"
       className="input"
       onChange={manipular}

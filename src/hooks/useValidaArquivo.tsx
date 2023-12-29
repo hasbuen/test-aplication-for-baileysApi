@@ -1,25 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const useValidaArquivo = () => {
   const [aprovaArquivo, setResposta] = useState(false);
+  const [arquivo, setArquivo] = useState<File | null>(null);
 
-  const validaArquivo = (arquivo: File | null) => {
-    if (!arquivo) {
-      setResposta(false);
-      return;
-    }
+  useEffect(() => {
+    const validaArquivo = () => {
+      if (!arquivo) {
+        setResposta(false);
+        return;
+      }
 
-    // Define o limite de tamanho em bytes (ex: 5 MB)
-    const limiteTamanho = 5 * 1024 * 1024; // 5 MB em bytes
+      const limiteTamanho = (5 * 1024) * 1024;
 
-    if (arquivo.size <= limiteTamanho) {
-      setResposta(true);
-    } else {
-      setResposta(false);
-    }
-  };
+      if (arquivo.size > limiteTamanho) {
+        setResposta(false);
+      } else {
+        setResposta(true);
+      }
+    };
 
-  return { aprovaArquivo, validaArquivo };
+    validaArquivo();
+  }, [arquivo]);
+
+  return { aprovaArquivo, setArquivo };
 };
 
 export default useValidaArquivo;
