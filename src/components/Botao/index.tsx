@@ -10,14 +10,15 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-const BotaoCustomizado = styled(Button)<ButtonProps>(({ theme }) => ({
-  color: 'white', 
-  fontWeight: 'bold',
+const BotaoCustomizado = styled(Button)<ButtonProps>({
+  color: 'white', // Cor do texto branca
+  fontWeight: 'bold', // Texto em negrito
   backgroundColor: green[400],
   '&:hover': {
     backgroundColor: green[500],
   },
-}));
+});
+
 
 const Botao: React.FC<ButtonProps> = ({ onClick }) => {
   return <BotaoCustomizado onClick={onClick} variant="contained" endIcon={<SendIcon/>}> ENVIAR </BotaoCustomizado>;

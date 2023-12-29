@@ -1,18 +1,16 @@
 class Factory {
     constructor() {}
 
-    async sendText(number: string, msg: string, token: string): Promise<void> {
+    async sendText(token: string, telefone: string, mensagem: string ): Promise<boolean> {
         const endpoint = import.meta.env.VITE_ENDPOINT;
         
         const url = new URL(endpoint);
 
-        // Configurar parâmetros do corpo da requisição
         const body = {
-            number,
-            body: msg,
+            telefone,
+            body: mensagem,
         };
 
-        // Configurar cabeçalhos da requisição
         const headers = new Headers();
         headers.append('X_TOKEN', token);
         headers.append('Content-Type', 'application/json');
@@ -25,18 +23,15 @@ class Factory {
         };
 
         try {
-            const response = await fetch(url.toString(), options);
-            const responseData = await response.json();
+            await fetch(url.toString(), options);
             
-            // Lógica para tratar a resposta da API
-            console.log('Resposta da API:', responseData);
+            return true;
         } catch (error) {
-            // Lógica para tratar erros
-            console.error('Erro ao enviar mensagem de texto:', error);
+            return false;
         }
     }
 
-    async sendFile(number: string, file: any, token: string): Promise<void> {
+    async sendFile(number: string, token: string, file: any): Promise<boolean> {
         const endpoint = import.meta.env.VITE_ENDPOINT;
 
         const url = new URL(endpoint);
@@ -60,13 +55,11 @@ class Factory {
 
         try {
             const response = await fetch(url.toString(), options);
-            const responseData = await response.json();
-            
-            // Lógica para tratar a resposta da API
-            console.log('Resposta da API:', responseData);
+            await response.json();
+
+            return true;
         } catch (error) {
-            // Lógica para tratar erros
-            console.error('Erro ao enviar arquivo:', error);
+            return false;
         }
     }
 }

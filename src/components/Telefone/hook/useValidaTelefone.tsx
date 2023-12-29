@@ -1,18 +1,18 @@
 // useTelefoneValidation.ts
 import { useState } from 'react';
+import validator from 'validator';
 
 const useValidaTelefone = () => {
-  const [isValid, setIsValid] = useState(false);
+  const [aprovaTelefone, setResposta] = useState(false);
 
-  const validaTelefone = (numero: string) => {
-    // Lógica de validação do número de telefone
-    // Substitua a lógica abaixo pela sua própria lógica de validação
-    const regex = /^\d{11}$/; // Exemplo: 10 dígitos numéricos
-    const isValid = regex.test(numero);
-    setIsValid(isValid);
+  const validaTelefone = (telefone: string) => {
+
+    const resultado =  validator.isMobilePhone(telefone, 'any', { strictMode: false });
+    setResposta(resultado);
+
   };
 
-  return { isValid, validaTelefone };
+  return { aprovaTelefone, validaTelefone };
 };
 
 export default useValidaTelefone;

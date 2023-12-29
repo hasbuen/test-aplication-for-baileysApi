@@ -3,21 +3,22 @@ import React, { useState } from 'react';
 import useValidaTelefone from './hook/useValidaTelefone';
 import { TextField } from '@mui/material';
 
-interface TelefoneProps {
-  onValidChange: (isValid: boolean, numero: string) => void,
+interface PropriedadeDoTelefone {
+  quandoTelefoneAlterar: (
+    aprovaTelefone: boolean, telefone: string) => void,
 }
 
-const Telefone: React.FC<TelefoneProps> = ({ onValidChange }) => {
-  const [numero, setNumero] = useState('');
-  const { isValid, validaTelefone } = useValidaTelefone();
+const Telefone: React.FC<PropriedadeDoTelefone> = ({ quandoTelefoneAlterar }) => {
+  const { aprovaTelefone, validaTelefone } = useValidaTelefone();
+  const [telefone, setResposta] = useState('');
+ 
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const novoNumero = event.target.value;
-    setNumero(novoNumero);
+  const manipular = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const novoTelefone = event.target.value;
+    setResposta(novoTelefone);
 
-    // Chamando a função de validação do número
-    validaTelefone(novoNumero);
-    onValidChange(isValid, novoNumero);
+    validaTelefone(novoTelefone);
+    quandoTelefoneAlterar(aprovaTelefone, novoTelefone);
   };
 
   return (
@@ -31,8 +32,8 @@ const Telefone: React.FC<TelefoneProps> = ({ onValidChange }) => {
        
         className="input"
 
-        value={numero}
-        onChange={handleChange}
+        value={telefone}
+        onChange={manipular}
       />
   );
 };

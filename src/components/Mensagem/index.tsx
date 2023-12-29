@@ -1,18 +1,25 @@
 // MensagemInput.tsx
-import { TextField } from '@mui/material';
-import React, { useState } from 'react';
 
-interface MensagemInputProps {
-  onMensagemChange: (mensagem: string) => void;
+import React, { useState } from 'react';
+import { TextField } from '@mui/material';
+import useValidaMensagem from './hook/useValidaMensagem.tsx';
+
+interface PropriedadeDaMensagem {
+  quandoMensagemAlerar: (
+    aprovaMensagem: boolean, mensagem: string) => void;
 }
 
-const MsgInput: React.FC<MensagemInputProps> = ({ onMensagemChange }) => {
+const Mensagem: React.FC<PropriedadeDaMensagem> = ({ quandoMensagemAlerar }) => {
   const [mensagem, setMensagem] = useState('');
+  const { aprovaMensagem, validaMensagem } = useValidaMensagem();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const manipular = (event: React.ChangeEvent<HTMLInputElement>) => {
     const novaMensagem = event.target.value;
+
     setMensagem(novaMensagem);
-    onMensagemChange(novaMensagem);
+
+    validaMensagem(novaMensagem);
+    quandoMensagemAlerar(aprovaMensagem, novaMensagem);
   };
 
   return (
@@ -27,9 +34,9 @@ const MsgInput: React.FC<MensagemInputProps> = ({ onMensagemChange }) => {
         className="input"
         
         value={mensagem}
-        onChange={handleChange}
+        onChange={manipular}
       />
   );
 };
 
-export default MsgInput;
+export default Mensagem;

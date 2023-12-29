@@ -1,5 +1,6 @@
 
-import TextCard from "./components/cards/TextCard"
+import TextCard from "@/components/cards/TextCard"
+import FileCard from "@/components/cards/FileCard"
 
 function App() {
 
@@ -10,6 +11,8 @@ function App() {
         <div className="row">
 
           <TextCard />
+
+          <FileCard />
 
 
         </div>

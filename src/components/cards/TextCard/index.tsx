@@ -1,53 +1,74 @@
 // App.tsx
 import { useState } from 'react';
-import Factory from '../../../services/factory';
-import Token from '../../Token';
-import Telefone from '../../Telefone';
-import Mensagem from '../../Mensagem';
-import Botao from '../../Botao';
+import Factory from '@/services/factory';
+import Token from '@/components/Token';
+import Telefone from '@/components/Telefone';
+import Mensagem from '@/components/Mensagem';
+import Botao from '@/components/Botao';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function TextCard() {
-    const [isNumeroValido, setIsNumeroValido] = useState<boolean>(false);
-    const [numeroTelefone, setNumeroTelefone] = useState<string>('');
-    const [token, setToken] = useState<string>('');
-    const [mensagem, setMensagem] = useState<string>('');
 
-    const handleValidChange = (isValid: boolean, numero: string) => {
-        setIsNumeroValido(isValid);
-        setNumeroTelefone(numero);
+
+    const [tokenValidado, setRespostaToken] = useState<boolean>(false);
+    const [tokenPronto, setToken] = useState<string>('');
+
+    const manipulandoTokenAlterado = (aprovaToken: boolean, token: string) => {
+        setRespostaToken(aprovaToken);
+        setToken(token);
     };
 
-    const handleTokenChange = (novoToken: string) => {
-        setToken(novoToken);
+    const [telefoneValidado, setRespostaTelefone] = useState<boolean>(false);
+    const [telefonePronto, setTelefone] = useState<string>('');
+
+    const manipulandoTelefoneAlterado = (aprovaTelefone: boolean, telefone: string) => {
+        setRespostaTelefone(aprovaTelefone);
+        setTelefone(telefone);
     };
 
-    const handleMensagemChange = (novaMensagem: string) => {
-        setMensagem(novaMensagem);
+    const [mensagemValidada, setRespostaMensagem] = useState<boolean>(false);
+    const [mensagemPronta, setMensagem] = useState<string>('');
+
+    const manipulandoMensagemAlterada = (aprovaMensagem: boolean, mensagem: string) => {
+        setRespostaMensagem(aprovaMensagem);
+        setMensagem(mensagem);
     };
 
-    const handleButtonClick = () => {
-        if (!isNumeroValido) {
-            console.log('Número de telefone inválido. Ação não realizada.');
+    const enviarFormulario = async () => {
+        if (!tokenValidado) {
+            toast.warning('Token não fornecido.');
             return;
         }
 
-        if (!token) {
-            console.log('Token não fornecido. Ação não realizada.');
+        if (!telefoneValidado) {
+            toast.warning(`Telefone no formato inválido. Exemplo a seguir: 554533016606 `);
             return;
         }
 
-        if (!mensagem) {
-            console.log('Mensagem de texto não fornecida. Ação não realizada.');
+        if (!mensagemValidada) {
+            toast.warning('Mensagem deve conter no máximo 255 caracteres.');
             return;
         }
 
-        // Se todas as verificações passarem, realizar a ação
-        const factoryInstance = new Factory();
-        factoryInstance.sendText(numeroTelefone, mensagem, token);
-    };
+
+        try {
+            const factoryInstance = new Factory();
+            const confereEnvio = await factoryInstance.sendText(tokenPronto, telefonePronto, mensagemPronta);
+      
+            if (confereEnvio) {
+              toast.success('Mensagem enviada com sucesso!');
+            } else {
+              toast.error('Oops. Algo deu errado!');
+            }
+          } catch (error) {
+            console.error('Erro ao enviar mensagem:', error);
+            toast.error('Oops. Algo deu errado!');
+          }
+        };
 
     return (
         <Container maxWidth="sm">
@@ -57,25 +78,27 @@ function TextCard() {
                 </Box>
                 <Box gridColumn="span 6">
 
-                    <Token onTokenChange={handleTokenChange} />
+                    <Token quandoTokenAlterar={manipulandoTokenAlterado} />
 
                 </Box>
                 <Box gridColumn="span 6">
 
-                    <Telefone onValidChange={handleValidChange} />
+                    <Telefone quandoTelefoneAlterar={manipulandoTelefoneAlterado} />
 
                 </Box>
                 <Box gridColumn="span 12">
 
-                    <Mensagem onMensagemChange={handleMensagemChange} />
+                    <Mensagem quandoMensagemAlerar={manipulandoMensagemAlterada} />
 
                 </Box>
                 <Box gridColumn="span 12" textAlign="right">
 
-                    <Botao onClick={handleButtonClick} />
-                    
+                    <Botao onClick={enviarFormulario} />
+
                 </Box>
             </Box>
+
+            <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </Container>
     );
 }

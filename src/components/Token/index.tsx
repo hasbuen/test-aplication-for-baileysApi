@@ -1,19 +1,23 @@
 // TokenInput.tsx
 import { TextField } from '@mui/material';
 import React, { useState } from 'react';
+import useValidaToken from './hook/useValidaToken';
 
 
-interface TokenInputProps {
-  onTokenChange: (token: string) => void;
+interface PropriedadeDoToken {
+  quandoTokenAlterar: (aprovaToken: boolean, token: string) => void;
 }
 
-const TokenInput: React.FC<TokenInputProps> = ({ onTokenChange }) => {
-  const [token, setToken] = useState('');
+const Token: React.FC<PropriedadeDoToken> = ({ quandoTokenAlterar }) => {
+  const {aprovaToken, validaToken } = useValidaToken();
+  const [token, setResposta] = useState('');
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const manipular = (event: React.ChangeEvent<HTMLInputElement>) => {
     const novoToken = event.target.value;
-    setToken(novoToken);
-    onTokenChange(novoToken);
+    setResposta(novoToken);
+
+    validaToken(novoToken);
+    quandoTokenAlterar(aprovaToken, novoToken);
   };
 
 
@@ -30,9 +34,9 @@ const TokenInput: React.FC<TokenInputProps> = ({ onTokenChange }) => {
         className="input"
 
         value={token}
-        onChange={handleChange}
+        onChange={manipular}
       />
   );
 };
 
-export default TokenInput;
+export default Token;
