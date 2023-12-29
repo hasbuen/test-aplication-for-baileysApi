@@ -1,9 +1,9 @@
 class Factory {
-    constructor() {}
+    constructor() { }
 
-    async sendText(token: string, telefone: string, mensagem: string ): Promise<boolean> {
+    async enviarMensagem(token: string, telefone: string, mensagem: string): Promise<boolean> {
         const endpoint = import.meta.env.VITE_ENDPOINT;
-        
+
         const url = new URL(endpoint);
 
         const body = {
@@ -23,21 +23,21 @@ class Factory {
 
         try {
             await fetch(url.toString(), options);
-            
+
             return true;
         } catch (error) {
             return false;
         }
     }
 
-    async sendFile(number: string, token: string, file: any): Promise<boolean> {
+    async enviarArquivo(token: string, telefone: string, arquivo: any): Promise<boolean> {
         const endpoint = import.meta.env.VITE_ENDPOINT;
 
         const url = new URL(endpoint);
 
         const formData = new FormData();
-        formData.append('number', number);
-        formData.append('medias', file);
+        formData.append('number', telefone);
+        formData.append('medias', arquivo);
 
         const headers = new Headers();
         headers.append('X_TOKEN', token);
@@ -51,10 +51,11 @@ class Factory {
         };
 
         try {
-            const response = await fetch(url.toString(), options);
-            await response.json();
+
+            await fetch(url.toString(), options);
 
             return true;
+
         } catch (error) {
             return false;
         }

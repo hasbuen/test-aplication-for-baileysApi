@@ -1,6 +1,5 @@
-// textCardUtils.ts
-
 import Factory from "@/services/factory";
+import { EMensagem } from "@/enums";
 
 export const TextFormController = async (
   tokenValidado: boolean,
@@ -13,30 +12,24 @@ export const TextFormController = async (
   mensagem: string
   
 ) => {
-  if (!tokenValidado) {
-    return 'Token não fornecido.';
-  }
 
-  if (!telefoneValidado) {
-    return `Telefone no formato inválido. Exemplo a seguir: 554533016606 `;
-    return;
-  }
+  if (!tokenValidado) 
+    return EMensagem.TOKEN_INVALIDO;
 
-  if (!mensagemValidada) {
-    return 'Mensagem deve conter no máximo 255 caracteres.';
-  }
+  if (!telefoneValidado) 
+    return EMensagem.TELEFONE_INVALIDO;
 
+  if (!mensagemValidada)
+    return EMensagem.MENSAGEM_INVALIDA;
 
   try {
     const factoryInstance = new Factory();
-    const confereEnvio = await factoryInstance.sendText(token, telefone, mensagem);
+    const confereEnvio = await factoryInstance.enviarMensagem(token, telefone, mensagem);
 
-    if (confereEnvio) 
-      return 'Mensagem enviada com sucesso!';
-
+    return (confereEnvio) ? EMensagem.SUCESSO_ENVIO_MENSAGEM : EMensagem.FALHA_ENVIO_MENSAGEM;
+  
   } catch (error) {
-    console.error('Erro ao enviar mensagem:', error);
-    return 'Oops. Algo deu errado!';
+    return EMensagem.FALHA_ENVIO_MENSAGEM;
   }
 };
 

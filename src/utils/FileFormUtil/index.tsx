@@ -1,8 +1,5 @@
-// textCardUtils.ts
-
 import Factory from "@/services/factory";
-
-
+import { EMensagem } from "@/enums";
 
 export const FileFormController = async (
   tokenValidado: boolean,
@@ -11,34 +8,27 @@ export const FileFormController = async (
   telefoneValidado: boolean,
   telefone: string,
 
-  mensagemValidada: boolean,
-  mensagem: string
+  arquivoValidado: boolean,
+  arquivo: File | null
   
 ) => {
-  if (!tokenValidado) {
-    return 'Token não fornecido.';
-  }
+  if (!tokenValidado)
+    return EMensagem.TOKEN_INVALIDO;
 
-  if (!telefoneValidado) {
-    return `Telefone no formato inválido. Exemplo a seguir: 554533016606 `;
-    return;
-  }
+  if (!telefoneValidado)
+    return EMensagem.TELEFONE_INVALIDO;
 
-  if (!mensagemValidada) {
-    return 'Mensagem deve conter no máximo 255 caracteres.';
-  }
-
+  if (!arquivoValidado) 
+    return  EMensagem.ARQUIVO_INVALIDO;
 
   try {
     const factoryInstance = new Factory();
-    const confereEnvio = await factoryInstance.sendText(token, telefone, mensagem);
+    const confereEnvio = await factoryInstance.enviarArquivo(token, telefone, arquivo);
 
-    if (confereEnvio) 
-      return 'Mensagem enviada com sucesso!';
+    return (confereEnvio) ? EMensagem.SUCESSO_ENVIO_ARQUIVO : EMensagem.FALHA_ENVIO_ARQUIVO;
 
   } catch (error) {
-    console.error('Erro ao enviar mensagem:', error);
-    return 'Oops. Algo deu errado!';
+    return EMensagem.FALHA_ENVIO_ARQUIVO;
   }
 };
 

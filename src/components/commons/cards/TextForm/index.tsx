@@ -4,8 +4,8 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { TextFormController } from '@/utils';
+import { EMensagem } from '@/enums';
 
 function TextForm() {
     const [tokenValidado, setRespostaToken] = useState<boolean>(false);
@@ -43,7 +43,19 @@ function TextForm() {
         );
 
         if (typeof resultado === 'string')
-            toast.warning(resultado);
+        switch (resultado) {
+            case EMensagem.SUCESSO_ENVIO_MENSAGEM.toString():
+                toast.success(resultado);
+                break;
+
+            case EMensagem.FALHA_ENVIO_MENSAGEM.toString():
+                toast.error(resultado);
+                break;
+
+            default:
+                toast.warning(resultado);
+                break;
+        }
 
     };
 
