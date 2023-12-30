@@ -1,5 +1,6 @@
-export { default as Token } from './Token';
-export { default as Telefone } from './Telefone';
-export { default as Mensagem } from './Mensagem';
-export { default as Arquivo } from './Arquivo';
-export { default as Botao } from './Botao';
+export { default as Config } from './Buttons/Config';
+export { default as Token } from './Inputs/Token';
+export { default as Telefone } from './Inputs/Telefone';
+export { default as Mensagem } from './Inputs/Mensagem';
+export { default as Arquivo } from './Inputs/Arquivo';
+export { default as Enviar } from './Buttons/Enviar';

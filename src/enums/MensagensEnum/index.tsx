@@ -1,5 +1,7 @@
 
 enum EMensagem {
+    SUCESSO_GENERICO = 'Operação realizada com sucesso!',
+    FALHA_GENERICA = 'Oops. Algo eu errado!',
     TOKEN_INVALIDO = 'Token não fornecido.',
     TELEFONE_INVALIDO = 'Telefone no formato inválido. Exemplo a seguir: 554533016606',
     MENSAGEM_INVALIDA = 'Mensagem deve conter no máximo 255 caracteres.',

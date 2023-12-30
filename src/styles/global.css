@@ -12,12 +12,22 @@ body {
   font-family: 'Segoe UI', Verdana, sans-serif;
 }
 
+.box {
+  border: 1px solid transparent;
+
+}
+
+.button {
+  border: 1px solid transparent;
+  outline: none;
+}
+
 .input {
   width: 100%;
 
   & .MuiOutlinedInput-root {
     & fieldset {
-      border-color: gray; /
+      border-color: gray; 
     }
 
     &:hover fieldset {

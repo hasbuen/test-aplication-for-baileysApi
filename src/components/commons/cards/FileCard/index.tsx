@@ -1,13 +1,16 @@
+// App.tsx
 import { useState } from 'react';
-import { Token, Telefone, Mensagem, Botao } from '@/components/UI';
+import { Token, Telefone, Arquivo, Enviar } from '@/components/UI';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { TextFormController } from '@/utils';
-import { EMensagem } from '@/enums';
+import { FileFormController } from '@/utils';
+import { EMensagem, ERotulos } from '@/enums';
 
-function TextForm() {
+
+function FileCard() {
+
     const [tokenValidado, setRespostaToken] = useState<boolean>(false);
     const [tokenPronto, setToken] = useState<string>('');
 
@@ -24,38 +27,39 @@ function TextForm() {
         setTelefone(telefone);
     };
 
-    const [mensagemValidada, setRespostaMensagem] = useState<boolean>(false);
-    const [mensagemPronta, setMensagem] = useState<string>('');
+    const [arquivoValidado, setRespostaArquivo] = useState<boolean>(false);
+    const [arquivoPronto, setArquivo] = useState<File | null>(null);
 
-    const manipulandoMensagemAlterada = (aprovaMensagem: boolean, mensagem: string) => {
-        setRespostaMensagem(aprovaMensagem);
-        setMensagem(mensagem);
+    const manipulandoArquivoAlterado = (aprovaArquivo: boolean, arquivo: File | null) => {
+        setRespostaArquivo(aprovaArquivo);
+        setArquivo(arquivo);
     };
 
+
     const enviarFormulario = async () => {
-        const resultado = await TextFormController(
+        const resultado = await FileFormController(
             tokenValidado,
             tokenPronto,
             telefoneValidado,
             telefonePronto,
-            mensagemValidada,
-            mensagemPronta
+            arquivoValidado,
+            arquivoPronto
         );
 
         if (typeof resultado === 'string')
-        switch (resultado) {
-            case EMensagem.SUCESSO_ENVIO_MENSAGEM.toString():
-                toast.success(resultado);
-                break;
+            switch (resultado) {
+                case EMensagem.SUCESSO_ENVIO_ARQUIVO.toString():
+                    toast.success(resultado);
+                    break;
 
-            case EMensagem.FALHA_ENVIO_MENSAGEM.toString():
-                toast.error(resultado);
-                break;
+                case EMensagem.FALHA_ENVIO_ARQUIVO.toString():
+                    toast.error(resultado);
+                    break;
 
-            default:
-                toast.warning(resultado);
-                break;
-        }
+                default:
+                    toast.warning(resultado);
+                    break;
+            }
 
     };
 
@@ -77,12 +81,12 @@ function TextForm() {
                 </Box>
                 <Box gridColumn="span 12">
 
-                    <Mensagem quandoMensagemAlerar={manipulandoMensagemAlterada} />
+                    <Arquivo quandoArquivoAlerar={manipulandoArquivoAlterado} />
 
                 </Box>
                 <Box gridColumn="span 12" textAlign="right">
 
-                    <Botao onClick={enviarFormulario} />
+                    <Enviar onClick={enviarFormulario} label={ERotulos.BOTAO_ENVIAR} />
 
                 </Box>
             </Box>
@@ -92,4 +96,4 @@ function TextForm() {
     );
 }
 
-export default TextForm;
+export default FileCard;

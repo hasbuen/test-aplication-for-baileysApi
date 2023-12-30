@@ -28,9 +28,9 @@
       ]
     }
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src/**/*.tsx", "src/**/*.ts"],
+  "exclude": ["node_modules", "build", "docs"],
+  "entryPoints": ["src"],
   "references": [
     {
       "path": "./tsconfig.node.json"

@@ -1,6 +1,28 @@
 class Factory {
     constructor() { }
 
+    async armazenarToken(token: string): Promise<Boolean> {
+
+        try {
+            localStorage.setItem('token', token);
+            return true;
+            
+        } catch {
+            return false;
+        }
+
+    };
+
+    async obterTokenArmazenado(): Promise<string> {
+        try {
+            const getToken = localStorage.getItem('token');
+            return getToken || '';
+            
+        } catch {
+            return '';
+        }
+    };
+
     async enviarMensagem(token: string, telefone: string, mensagem: string): Promise<boolean> {
         const endpoint = import.meta.env.VITE_ENDPOINT;
 
