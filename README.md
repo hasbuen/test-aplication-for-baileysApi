@@ -1,6 +1,6 @@
 # Desafio de Desenvolvimento - integra-whats-professional
 
-Este projeto foi desenvolvido como parte de um desafio para aprovação a uma vaga de desenvolvimento na [Nome da Empresa]. O objetivo é demonstrar habilidades em React, Material-UI, manipulação de estado e estruturação de projeto.
+Este projeto foi desenvolvido como parte de um desafio para aprovação a uma vaga de desenvolvimento. O objetivo é demonstrar habilidades em React, Material-UI, manipulação de estado e estruturação de projeto.
 
 ## Tecnologias Utilizadas
 
