@@ -6,21 +6,15 @@ class Factory {
         try {
             localStorage.setItem('token', token);
             return true;
-            
+
         } catch {
             return false;
         }
 
     };
 
-    async obterTokenArmazenado(): Promise<string> {
-        try {
-            const getToken = localStorage.getItem('token');
-            return getToken || '';
-            
-        } catch {
-            return '';
-        }
+    obterTokenArmazenado(): string {
+        return localStorage.getItem('token') || '';
     };
 
     async enviarMensagem(token: string, telefone: string, mensagem: string): Promise<boolean> {
@@ -65,7 +59,6 @@ class Factory {
         headers.append('X_TOKEN', token);
         headers.append('Content-Type', 'multipart/form-data');
 
-        // Configurar opções da requisição
         const options: RequestInit = {
             method: 'POST',
             headers,

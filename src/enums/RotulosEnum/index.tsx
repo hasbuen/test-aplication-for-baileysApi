@@ -1,7 +1,7 @@
 
 enum ERotulos {
     BOTAO_ENVIAR = 'ENVIAR',
-    BOTAO_CADASTRAR = 'Cadastrar'
+    BOTAO_CONFIRMAR = 'CONFIRMAR'
     
   }
   

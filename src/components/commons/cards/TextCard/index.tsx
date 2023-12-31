@@ -8,6 +8,7 @@ import { TextFormController } from '@/utils';
 import { EMensagem, ERotulos } from '@/enums';
 
 function TextCard() {
+
     const [tokenValidado, setRespostaToken] = useState<boolean>(false);
     const [tokenPronto, setToken] = useState<string>('');
 
@@ -43,19 +44,19 @@ function TextCard() {
         );
 
         if (typeof resultado === 'string')
-        switch (resultado) {
-            case EMensagem.SUCESSO_ENVIO_MENSAGEM.toString():
-                toast.success(resultado);
-                break;
+            switch (resultado) {
+                case EMensagem.SUCESSO_ENVIO_MENSAGEM.toString():
+                    toast.success(resultado);
+                    break;
 
-            case EMensagem.FALHA_ENVIO_MENSAGEM.toString():
-                toast.error(resultado);
-                break;
+                case EMensagem.FALHA_ENVIO_MENSAGEM.toString():
+                    toast.error(resultado);
+                    break;
 
-            default:
-                toast.warning(resultado);
-                break;
-        }
+                default:
+                    toast.warning(resultado);
+                    break;
+            }
 
     };
 

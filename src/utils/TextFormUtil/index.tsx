@@ -12,10 +12,9 @@ export const TextFormController = async (
   mensagem: string
   
 ) => {
-
   if (!tokenValidado) 
     return EMensagem.TOKEN_INVALIDO;
-
+  
   if (!telefoneValidado) 
     return EMensagem.TELEFONE_INVALIDO;
 
@@ -24,6 +23,10 @@ export const TextFormController = async (
 
   try {
     const factoryInstance = new Factory();
+
+    if(token === null || token === '')
+      return EMensagem.TOKEN_INVALIDO;
+
     const confereEnvio = await factoryInstance.enviarMensagem(token, telefone, mensagem);
 
     return (confereEnvio) ? EMensagem.SUCESSO_ENVIO_MENSAGEM : EMensagem.FALHA_ENVIO_MENSAGEM;

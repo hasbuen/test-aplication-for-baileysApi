@@ -7,7 +7,6 @@ import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Container, B
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 
-
 const ConexaoModal: React.FC<ConexaoModalDTO> = ({ abrirModal, fecharModal }) => {
   const fechandoModal = () => {
     fecharModal();
@@ -15,7 +14,6 @@ const ConexaoModal: React.FC<ConexaoModalDTO> = ({ abrirModal, fecharModal }) =>
 
   const [tokenValidado, setRespostaToken] = useState<boolean>(false);
   const [tokenPronto, setToken] = useState<string>('');
-
 
   const manipulandoTokenAlterado = (aprovaToken: boolean, token: string) => {
     setRespostaToken(aprovaToken);
@@ -49,29 +47,20 @@ const ConexaoModal: React.FC<ConexaoModalDTO> = ({ abrirModal, fecharModal }) =>
 
   return (
 
-
-
     <Dialog open={abrirModal} onClose={fechandoModal}>
 
       <Container maxWidth="sm">
         <Box display="grid" gridTemplateColumns="1fr 1fr">
           <Box gridColumn="span 12">
-            <DialogTitle>Conexão</DialogTitle>
+            <DialogTitle>Token padrão</DialogTitle>
           </Box>
 
           <Box gridColumn="span 12">
             <DialogContent>
 
-
-
               <Token quandoTokenAlterar={manipulandoTokenAlterado} />
 
-
-
-
-              <Enviar onClick={enviarFormulario} label={ERotulos.BOTAO_CADASTRAR}/>
-
-
+              <Enviar onClick={enviarFormulario} label={ERotulos.BOTAO_CONFIRMAR}/>
 
             </DialogContent>
           </Box>

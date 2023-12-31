@@ -1,4 +1,3 @@
-// App.tsx
 import { useState } from 'react';
 import { Token, Telefone, Arquivo, Enviar } from '@/components/UI';
 import Container from '@mui/material/Container';
@@ -7,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FileFormController } from '@/utils';
 import { EMensagem, ERotulos } from '@/enums';
-
 
 function FileCard() {
 
@@ -34,7 +32,6 @@ function FileCard() {
         setRespostaArquivo(aprovaArquivo);
         setArquivo(arquivo);
     };
-
 
     const enviarFormulario = async () => {
         const resultado = await FileFormController(

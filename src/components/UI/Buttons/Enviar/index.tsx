@@ -7,7 +7,7 @@ import { green } from '@mui/material/colors';
 
 interface ButtonProps {
   onClick: () => void;
-  label: string;
+  label?: string;
 }
 
 const EnviarCustomizado = styled(Button)<ButtonProps>({
@@ -21,7 +21,9 @@ const EnviarCustomizado = styled(Button)<ButtonProps>({
 
 
 const Enviar: React.FC<ButtonProps> = ({ onClick, label }) => {
-  return <EnviarCustomizado className='button' label={label} onClick={onClick} variant="contained" />;
+  return <EnviarCustomizado className='button' onClick={onClick} variant="contained">
+    {label}
+  </EnviarCustomizado>;
 };
 
 export default Enviar;
