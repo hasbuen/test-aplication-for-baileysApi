@@ -61,6 +61,7 @@ class Factory {
   
       const headers = new Headers();
       headers.append('X_TOKEN', token);
+      headers.append('Authorization', `Bearer ${token}`);
       headers.append('Content-Type', 'application/json');
   
       const options: RequestInit = {
@@ -97,6 +98,7 @@ class Factory {
   
       const headers = new Headers();
       headers.append('X_TOKEN', token);
+      headers.append('Authorization', `Bearer ${token}`);
       headers.append('Content-Type', 'multipart/form-data');
   
       const options: RequestInit = {
