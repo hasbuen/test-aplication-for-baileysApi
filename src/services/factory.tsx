@@ -51,29 +51,33 @@ class Factory {
      */
     async enviarMensagem(token: string, telefone: string, mensagem: string): Promise<boolean> {
       const endpoint = import.meta.env.VITE_ENDPOINT;
-      console.log(endpoint)
-      const url = new URL(endpoint);
-  
-      const body = {
-        telefone,
+      const url = new URL(endpoint + "/api/messages/send");
+
+      const body = JSON.stringify({
+        number: telefone,
         body: mensagem,
-      };
-  
+      });
+
       const headers = new Headers();
-      //headers.append('X_TOKEN', token);
-      headers.append('Authorization', `Bearer ${token}`);
       headers.append('Content-Type', 'application/json');
-  
+      headers.append('Authorization', `Bearer ${token}`);
+
       const options: RequestInit = {
         method: 'POST',
         headers,
-        body: JSON.stringify(body),
+        body,
       };
-  
-      try {
-        await fetch(url.toString(), options);
-        return true;
+
+     try {
+        const response = await fetch(url.toString(), options);
+        if (response.ok) {
+          return true;
+        } else {
+          console.error(`Erro na requisição: ${response.status} - ${response.statusText}`);
+          return false;
+        }
       } catch (error) {
+        console.error('Erro ao processar a requisição:', error);
         return false;
       }
     }
