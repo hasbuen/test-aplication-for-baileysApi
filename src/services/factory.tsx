@@ -103,7 +103,7 @@ class Factory {
       formData.append('medias', arquivo);
   
       const headers = new Headers();
-      headers.append('X_TOKEN', token);
+      // headers.append('X_TOKEN', token);
       headers.append('Authorization', `Bearer ${token}`);
       headers.append('Content-Type', 'multipart/form-data');
   
