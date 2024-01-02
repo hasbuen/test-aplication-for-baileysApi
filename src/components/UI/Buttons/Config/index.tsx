@@ -1,4 +1,9 @@
-// Button.tsx
+/**
+ * Componente que representa um botão de configuração.
+ * @component
+ * @param {Object} props - Propriedades do componente.
+ * @param {function} props.onClick - Função a ser chamada quando o botão é clicado.
+ */
 import React from 'react';
 import { Menu } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
@@ -9,10 +14,15 @@ interface ButtonProps {
 
 const Config: React.FC<ButtonProps> = ({ onClick }) => {
 
-  return <IconButton onClick={onClick}>
-    <Menu />
-  </IconButton>
-
+  /**
+   * Renderiza o componente do botão de configuração.
+   * @returns {JSX.Element} - Elemento JSX representando o botão de configuração.
+   */
+  return (
+    <IconButton onClick={onClick}>
+      <Menu />
+    </IconButton>
+  );
 };
 
 export default Config;

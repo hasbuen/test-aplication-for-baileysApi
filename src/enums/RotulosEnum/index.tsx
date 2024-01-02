@@ -1,9 +1,9 @@
-
+/**
+ * Enumeração de rótulos utilizados na aplicação.
+ */
 enum ERotulos {
-    BOTAO_ENVIAR = 'ENVIAR',
-    BOTAO_CONFIRMAR = 'CONFIRMAR'
-    
-  }
-  
-  export default ERotulos;
-  
+  BOTAO_ENVIAR = 'Enviar',
+  BOTAO_CONFIRMAR = 'Confirmar',
+}
+
+export default ERotulos;
