@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Token, Telefone, Mensagem, Enviar } from '@/components/UI';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
