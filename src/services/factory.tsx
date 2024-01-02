@@ -60,7 +60,7 @@ class Factory {
       };
   
       const headers = new Headers();
-      headers.append('X_TOKEN', token);
+      //headers.append('X_TOKEN', token);
       headers.append('Authorization', `Bearer ${token}`);
       headers.append('Content-Type', 'application/json');
   
