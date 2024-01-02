@@ -58,6 +58,8 @@ class Factory {
         body: mensagem,
       });
 
+      console.log(body)
+
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
       headers.append('Authorization', `Bearer ${token}`);
@@ -65,7 +67,7 @@ class Factory {
       const options: RequestInit = {
         method: 'POST',
         headers,
-        body,
+        body: body,
       };
 
      try {
