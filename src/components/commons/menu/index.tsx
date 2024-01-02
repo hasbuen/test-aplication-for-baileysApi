@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Box, Menu, MenuItem } from '@mui/material';
 import { Config } from '@/components/UI';
 import ConexaoModal from '@/components/modals/ConexaoModal';
-import { MenuBook } from '@mui/icons-material';
 
 /**
  * Componente que representa o menu de configurações.
@@ -24,7 +23,7 @@ function ConfigMenu() {
 
     // Função para abrir a documentação em uma nova janela
     const abrirDocs = () => {
-        const url = `src/docs/index.html`;
+        const url = `https://github.com/hasbuen/integra-whats-professional/tree/main/src/docs`;
         window.open(url, '_blank');
         setAnchorEl(null);
     };
@@ -77,7 +76,7 @@ function ConfigMenu() {
                 </MenuItem>
                 {/* Item do menu para abrir a documentação */}
                 <MenuItem onClick={abrirDocs}>
-                    Docs <MenuBook />
+                    Docs
                 </MenuItem>
             </Menu>
             {/* Modal de conexões */}
