@@ -31,6 +31,8 @@ const ConexaoModal: React.FC<ConexaoModalDTO> = ({ abrirModal, fecharModal }) =>
       switch (resultado) {
         case EMensagem.SUCESSO_GENERICO.toString():
           toast.success(resultado);
+
+          window.location.reload();
           break;
 
         case EMensagem.FALHA_GENERICA.toString():
@@ -60,7 +62,7 @@ const ConexaoModal: React.FC<ConexaoModalDTO> = ({ abrirModal, fecharModal }) =>
 
               <Token quandoTokenAlterar={manipulandoTokenAlterado} />
 
-              <Enviar onClick={enviarFormulario} label={ERotulos.BOTAO_CONFIRMAR}/>
+              <Enviar onClick={enviarFormulario} label={ERotulos.BOTAO_CONFIRMAR} />
 
             </DialogContent>
           </Box>

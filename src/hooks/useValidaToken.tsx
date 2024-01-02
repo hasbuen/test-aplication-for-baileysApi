@@ -1,9 +1,8 @@
-import Factory from '@/services/factory';
 import { useState, useEffect } from 'react';
 
 const useValidaToken = () => {
   const [aprovaToken, setResposta] = useState(false);
-  const [token, setToken] = useState<string>(new Factory().obterTokenArmazenado());
+  const [token, setToken] = useState<string>('');
 
   useEffect(() => {
     const validaToken = () => {
@@ -12,7 +11,7 @@ const useValidaToken = () => {
       if (confere.length > 0) {
         setResposta(true);
 
-      } else if (confere === '' || confere === null) {
+      } else if (confere.trim().length === 0) {
         setResposta(false);
       }
     };

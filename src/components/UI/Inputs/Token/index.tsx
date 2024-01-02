@@ -19,16 +19,11 @@ const Token: React.FC<TokenDTO> = ({ quandoTokenAlterar }) => {
       quandoTokenAlterar(aprovaToken, novoToken);
     }
 
-    if (novoToken === null || novoToken === '') {
+    if (novoToken === null || novoToken.trim().length === 0) {
 
-      const capturaTokenNoStorage = new Factory().obterTokenArmazenado();
-
-      if (capturaTokenNoStorage === null || capturaTokenNoStorage === '') {
+      if (new Factory().obterTokenArmazenado().trim().length === 0) 
         setNovoToken('')
-      } else {
-        setNovoToken(capturaTokenNoStorage);
-      }
-
+    
     } else {
       setNovoToken(novoToken);
     }
