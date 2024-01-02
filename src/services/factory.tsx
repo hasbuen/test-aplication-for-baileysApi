@@ -51,7 +51,7 @@ class Factory {
      */
     async enviarMensagem(token: string, telefone: string, mensagem: string): Promise<boolean> {
       const endpoint = import.meta.env.VITE_ENDPOINT;
-      const url = new URL(endpoint + "/api/messages/send");
+      const url = new URL(endpoint);
 
       const body = JSON.stringify({
         number: telefone,
