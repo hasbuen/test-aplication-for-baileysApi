@@ -1,0 +1,82 @@
+/* styles.module.css */
+
+/**
+ * Estilos globais para redefinir margens e preenchimentos padrão.
+ */
+ * {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Estilos para o corpo da aplicação.
+ */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  font-family: 'Segoe UI', Verdana, sans-serif;
+}
+
+/**
+ * Estilos para uma caixa genérica.
+ */
+.box {
+  border: 1px solid transparent;
+}
+
+/**
+ * Estilos para um botão genérico.
+ */
+.button {
+  border: 1px solid transparent;
+  outline: none;
+}
+
+/**
+ * Estilos para um campo de entrada genérico.
+ */
+.input {
+  width: 100%;
+
+  /**
+   * Estilos específicos para o componente de entrada do Material-UI (Mui).
+   */
+  & .MuiOutlinedInput-root {
+    /**
+     * Estilos para a borda do campo de entrada.
+     */
+    & fieldset {
+      border-color: gray; 
+    }
+
+    /**
+     * Estilos para a borda do campo de entrada durante o hover.
+     */
+    &:hover fieldset {
+      border-color: green; 
+    }
+
+    /**
+     * Estilos para a borda do campo de entrada quando focado.
+     */
+    &.Mui-focused fieldset {
+      border-color: green; 
+    }
+  }
+
+  /**
+   * Estilos para a etiqueta do campo de entrada.
+   */
+  & .MuiInputLabel-root {
+    color: gray; 
+  }
+
+  /**
+   * Estilos para a etiqueta do campo de entrada quando focada.
+   */
+  & .MuiInputLabel-root.Mui-focused {
+    color: green; 
+  }
+}
