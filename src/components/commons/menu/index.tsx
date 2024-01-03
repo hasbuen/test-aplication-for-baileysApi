@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Box, Menu, MenuItem } from '@mui/material';
+import { Box, Divider, Menu, MenuItem } from '@mui/material';
 import { Config } from '@/components/UI';
 import ConexaoModal from '@/components/modals/ConexaoModal';
-import { GitHub } from '@mui/icons-material';
+import { Article, GitHub } from '@mui/icons-material';
 
 /**
  * Componente que representa o menu de configurações.
@@ -83,13 +83,17 @@ function ConfigMenu() {
                 <MenuItem onClick={abrirConexaoModal}>
                     Conexões
                 </MenuItem>
+
+                {/* Item do menu para dividir sessões */}
+                <Divider />
+
                 {/* Item do menu para abrir a documentação */}
                 <MenuItem onClick={abrirDocs}>
-                    Docs
+                    <Article /> Docs
                 </MenuItem>
 
                 <MenuItem onClick={abrirRepositorioGitHub}>
-                    <GitHub />
+                    <GitHub /> Repos..
                 </MenuItem>
 
             </Menu>
