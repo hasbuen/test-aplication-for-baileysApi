@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Box, Menu, MenuItem } from '@mui/material';
 import { Config } from '@/components/UI';
 import ConexaoModal from '@/components/modals/ConexaoModal';
+import { GitHub } from '@mui/icons-material';
 
 /**
  * Componente que representa o menu de configurações.
@@ -24,7 +25,14 @@ function ConfigMenu() {
 
     // Função para abrir a documentação em uma nova janela
     const abrirDocs = () => {
-        const url = `https://github.com/hasbuen/integra-whats-professional/tree/main/src/docs`;
+        const url = `https://hasbuen.github.io/integra-whats-professional/`;
+        window.open(url, '_blank');
+        setAnchorEl(null);
+    };
+
+    // Função para abrir o repositório no GitHub
+    const abrirRepositorioGitHub = () => {
+        const url = `https://github.com/hasbuen/integra-whats-professional`;
         window.open(url, '_blank');
         setAnchorEl(null);
     };
@@ -79,6 +87,11 @@ function ConfigMenu() {
                 <MenuItem onClick={abrirDocs}>
                     Docs
                 </MenuItem>
+
+                <MenuItem onClick={abrirRepositorioGitHub}>
+                    <GitHub />
+                </MenuItem>
+
             </Menu>
             {/* Modal de conexões */}
             <ConexaoModal abrirModal={abrirModal} fecharModal={fecharModal} />
