@@ -10,6 +10,7 @@ import { EMensagem, ERotulos } from '@/enums';
 /**
  * Componente que representa um formulário para envio de mensagem de texto.
  * @component
+ * @name TextCard
  */
 function TextCard() {
   // Estado para verificar se o token foi validado

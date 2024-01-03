@@ -1,6 +1,7 @@
 /**
  * Componente que representa um botão de envio personalizado.
  * @component
+ * @name Envia
  * @param {Object} props - Propriedades do componente.
  * @param {function} props.onClick - Função a ser chamada quando o botão é clicado.
  * @param {string} [props.label] - Rótulo a ser exibido no botão (opcional).

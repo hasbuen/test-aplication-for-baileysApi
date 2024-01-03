@@ -1,6 +1,7 @@
 /**
  * Componente que representa um campo de entrada de arquivo.
  * @component
+ * @name Arquivo
  * @param {Object} props - Propriedades do componente.
  * @param {function} props.quandoArquivoAlerar - Função chamada quando o arquivo é alterado.
  */

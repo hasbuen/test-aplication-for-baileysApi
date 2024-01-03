@@ -1,6 +1,7 @@
 /**
  * Componente que representa um botão de configuração.
  * @component
+ * @name Config
  * @param {Object} props - Propriedades do componente.
  * @param {function} props.onClick - Função a ser chamada quando o botão é clicado.
  */

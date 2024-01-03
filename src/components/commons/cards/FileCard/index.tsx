@@ -10,6 +10,7 @@ import { EMensagem, ERotulos } from '@/enums';
 /**
  * Componente que representa um formulário para envio de arquivo.
  * @component
+ * @name FileCard
  */
 function FileCard() {
   // Estado para verificar se o token foi validado

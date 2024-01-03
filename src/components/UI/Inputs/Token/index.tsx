@@ -1,6 +1,7 @@
 /**
  * Componente que representa um campo de entrada de token.
  * @component
+ * @name Token
  * @param {Object} props - Propriedades do componente.
  * @param {function} props.quandoTokenAlterar - Função chamada quando o token é alterado.
  */

@@ -1,6 +1,7 @@
 /**
  * Componente que representa um campo de entrada de mensagem.
  * @component
+ * @name Mensagem
  * @param {Object} props - Propriedades do componente.
  * @param {function} props.quandoMensagemAlerar - Função chamada quando a mensagem é alterada.
  */

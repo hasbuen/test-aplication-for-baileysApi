@@ -1,6 +1,7 @@
 /**
  * Componente que representa um campo de entrada de telefone.
  * @component
+ * @name Telefone
  * @param {Object} props - Propriedades do componente.
  * @param {function} props.quandoTelefoneAlterar - Função chamada quando o telefone é alterado.
  */

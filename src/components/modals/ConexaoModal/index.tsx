@@ -10,6 +10,7 @@ import ConexaoModalDTO from '@/dtos/conexao.dto';
 /**
  * Componente que representa um modal para configuração de token padrão.
  * @component
+ * @name Modal
  * @param {Object} props - Propriedades do componente.
  * @param {boolean} props.abrirModal - Indica se o modal deve ser exibido.
  * @param {function} props.fecharModal - Função para fechar o modal.

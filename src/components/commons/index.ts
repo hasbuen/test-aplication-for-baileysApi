@@ -1,6 +1,7 @@
 /**
  * Módulo que exporta os componentes principais da aplicação.
  * @module Components
+ * @name Components
  */
 
 export { default as TextCard } from './cards/TextCard';

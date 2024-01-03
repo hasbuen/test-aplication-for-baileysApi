@@ -6,6 +6,7 @@ import ConexaoModal from '@/components/modals/ConexaoModal';
 /**
  * Componente que representa o menu de configurações.
  * @component
+ * @name Menu
  */
 function ConfigMenu() {
     // Estado para controlar a abertura do modal de conexões
