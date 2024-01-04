@@ -21,7 +21,7 @@ No terminal de acesso (CMD), acesar o diretório (API) e executar o comando:
 NODE server.js
 // https://github.com/hasbuen/integra-whats-professional/tree/main/API
 ```
-## estruturação
+## estruturação do client-side
 ```
 │   App.tsx
 │   main.tsx
