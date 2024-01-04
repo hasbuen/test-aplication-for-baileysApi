@@ -1,6 +1,6 @@
 # Desafio de Desenvolvimento - integra-whats-professional
 
-Este projeto foi desenvolvido como parte de um desafio para aprovação a uma vaga de desenvolvimento na [Nome da Empresa]. O objetivo é demonstrar habilidades em React, Material-UI, manipulação de estado e estruturação de projeto.
+Este projeto foi desenvolvido como parte de um desafio para aprovação a uma vaga de desenvolvimento. O objetivo é demonstrar habilidades em React, Material-UI, manipulação de estado e estruturação de projeto.
 
 ## Tecnologias Utilizadas
 
@@ -17,7 +17,10 @@ VITE_ENDPOINT_ENVAR_ARQUIVO=ENDPOINT_ENVIAR_ARQUIVO
 ```
 ### Lembre-se também:
 Para que a aplicação funcione adequadamente é necessário startar a API implementada! 
-link https://github.com/hasbuen/integra-whats-professional/tree/main/API
+
+````link 
+https://github.com/hasbuen/integra-whats-professional/tree/main/API
+````
 
 No terminal de acesso (CMD), acesar o diretório (API) e executar o comando:
 ```
