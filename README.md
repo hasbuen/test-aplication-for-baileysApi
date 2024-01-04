@@ -1,10 +1,11 @@
 # Desafio de Desenvolvimento - integra-whats-professional
 
-Este projeto foi desenvolvido como parte de um desafio para aprovação a uma vaga de desenvolvimento. O objetivo é demonstrar habilidades em React, Material-UI, manipulação de estado e estruturação de projeto.
+Este projeto foi desenvolvido como parte de um desafio para aprovação a uma vaga de desenvolvimento. O objetivo é demonstrar habilidades em Vite, React com Typescript e Material-UI, manipulação de estado e estruturação de projeto.
 
 ## Tecnologias Utilizadas
 
-- React
+- Vite
+- React + Typescript
 - Material-UI
 
 ## Configuração do Ambiente
@@ -16,13 +17,18 @@ VITE_ENDPOINT_ENVAR_MENSAGEM=ENDPOINT_ENVIAR_MENSAGEM
 VITE_ENDPOINT_ENVAR_ARQUIVO=ENDPOINT_ENVIAR_ARQUIVO
 ```
 ### Lembre-se também:
-Para que a aplicação funcione adequadamente é necessário startar a API implementada! 
+Para que a aplicação funcione adequadamente é necessário instalar as dependências necessárias e startar a API implementada! 
 
 ````link 
 https://github.com/hasbuen/integra-whats-professional/tree/main/API
 ````
 
-No terminal de acesso (CMD), acesar o diretório (API) e executar o comando:
+No terminal de acesso (CMD), acesar o diretório (API) e executar os comandos:
+- 1º comando
+```
+npm install
+```
+- 2º comando
 ```
 node server.js
 ```
