@@ -15,7 +15,7 @@ Antes de executar o projeto, é necessário configurar o arquivo `.env` na raiz 
 VITE_ENDPOINT_ENVAR_MENSAGEM=ENDPOINT_ENVIAR_MENSAGEM
 VITE_ENDPOINT_ENVAR_ARQUIVO=ENDPOINT_ENVIAR_ARQUIVO
 ```
-## Lembre-se também:
+### Lembre-se também:
 No terminal de acesso (CMD), acesar o diretório (API) e executar o comando:
 ```
 NODE server.js
