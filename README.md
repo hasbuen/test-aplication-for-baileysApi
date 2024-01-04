@@ -14,9 +14,13 @@ Antes de executar o projeto, é necessário configurar o arquivo `.env` na raiz 
 ```typescript
 VITE_ENDPOINT_ENVAR_MENSAGEM=ENDPOINT_ENVIAR_MENSAGEM
 VITE_ENDPOINT_ENVAR_ARQUIVO=ENDPOINT_ENVIAR_ARQUIVO
-
 ```
-
+## Lembre-se também:
+No terminal de acesso (CMD), acesar o diretório (API) e executar o comando:
+```
+NODE server.js
+// https://github.com/hasbuen/integra-whats-professional/tree/main/API
+```
 ## estruturação
 ```
 │   App.tsx
