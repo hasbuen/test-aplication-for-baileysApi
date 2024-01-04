@@ -7,119 +7,118 @@
  * @class
  */
 class Factory {
-    /**
-     * Construtor da classe Factory.
-     */
-    constructor() { }
-  
-    /**
-     * Armazena o token no localStorage.
-     *
-     * @async
-     * @method
-     * @param {string} token - O token a ser armazenado.
-     * @returns {Promise<boolean>} Uma Promise que resolve para `true` se o token for armazenado com sucesso, `false` caso contrário.
-     */
-    async armazenarToken(token: string): Promise<boolean> {
-      try {
-        localStorage.setItem('token', token);
-        return true;
-      } catch {
-        return false;
-      }
-    }
-  
-    /**
-     * Obtém o token armazenado no localStorage.
-     *
-     * @method
-     * @returns {string} O token armazenado, ou uma string vazia se não houver token armazenado.
-     */
-    obterTokenArmazenado(): string {
-      return localStorage.getItem('token') || '';
-    }
-  
-    /**
-     * Envia uma mensagem de texto para um endpoint.
-     *
-     * @async
-     * @method
-     * @param {string} token - O token de autenticação.
-     * @param {string} telefone - O número de telefone de destino da mensagem.
-     * @param {string} mensagem - O corpo da mensagem de texto.
-     * @returns {Promise<boolean>} Uma Promise que resolve para `true` se a mensagem for enviada com sucesso, `false` caso contrário.
-     */
-    async enviarMensagem(token: string, telefone: string, mensagem: string): Promise<boolean> {
-      const endpoint = import.meta.env.VITE_ENDPOINT;
-      const url = new URL(endpoint);
+  /**
+   * Construtor da classe Factory.
+   */
+  constructor() { }
 
-      const body = JSON.stringify({
-        number: telefone,
-        body: mensagem,
-      });
-
-      console.log(body)
-
-      const headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', `Bearer ${token}`);
-
-      const options: RequestInit = {
-        method: 'POST',
-        headers,
-        body: body,
-      };
-
-     try {
-        const response = await fetch(url.toString(), options);
-        if (response.ok) {
-          return true;
-        } else {
-          console.error(`Erro na requisição: ${response.status} - ${response.statusText}`);
-          return false;
-        }
-      } catch (error) {
-        console.error('Erro ao processar a requisição:', error);
-        return false;
-      }
-    }
-  
-    /**
-     * Envia um arquivo para um endpoint.
-     *
-     * @async
-     * @method
-     * @param {string} token - O token de autenticação.
-     * @param {string} telefone - O número de telefone de destino do arquivo.
-     * @param {any} arquivo - O arquivo a ser enviado.
-     * @returns {Promise<boolean>} Uma Promise que resolve para `true` se o arquivo for enviado com sucesso, `false` caso contrário.
-     */
-    async enviarArquivo(token: string, telefone: string, arquivo: any): Promise<boolean> {
-      const endpoint = import.meta.env.VITE_ENDPOINT;
-      const url = new URL(endpoint);
-  
-      const formData = new FormData();
-      formData.append('number', telefone);
-      formData.append('medias', arquivo);
-  
-      const headers = new Headers();
-      // headers.append('X_TOKEN', token);
-      headers.append('Authorization', `Bearer ${token}`);
-      headers.append('Content-Type', 'multipart/form-data');
-  
-      const options: RequestInit = {
-        method: 'POST',
-        headers,
-        body: formData,
-      };
-  
-      try {
-        await fetch(url.toString(), options);
-        return true;
-      } catch (error) {
-        return false;
-      }
+  /**
+   * Armazena o token no localStorage.
+   *
+   * @async
+   * @method
+   * @param {string} token - O token a ser armazenado.
+   * @returns {Promise<boolean>} Uma Promise que resolve para `true` se o token for armazenado com sucesso, `false` caso contrário.
+   */
+  async armazenarToken(token: string): Promise<boolean> {
+    try {
+      localStorage.setItem('token', token);
+      return true;
+    } catch {
+      return false;
     }
   }
+
+  /**
+   * Obtém o token armazenado no localStorage.
+   *
+   * @method
+   * @returns {string} O token armazenado, ou uma string vazia se não houver token armazenado.
+   */
+  obterTokenArmazenado(): string {
+    return localStorage.getItem('token') || '';
+  }
+
+  /**
+   * Envia uma mensagem de texto para um endpoint.
+   *
+   * @async
+   * @method
+   * @param {string} token - O token de autenticação.
+   * @param {string} telefone - O número de telefone de destino da mensagem.
+   * @param {string} mensagem - O corpo da mensagem de texto.
+   * @returns {Promise<boolean>} Uma Promise que resolve para `true` se a mensagem for enviada com sucesso, `false` caso contrário.
+   */
+  async enviarMensagem(token: string, telefone: string, mensagem: string): Promise<boolean> {
+    const url = import.meta.env.VITE_ENDPOINT_ENVAR_MENSAGEM;
+
+  const body = JSON.stringify({
+    token,
+    telefone,
+    mensagem,
+  });
+
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
+  const options: RequestInit = {
+    method: 'POST',
+    headers,
+    body: body,
+  };
+
+  try {
+    const response = await fetch(url, options);
+    console.log(response);
+
+    if (!response.ok) {
+      return false;
+    }
+
+    return true;
+
+  } catch (error) {
+    return false;
+  }
+}
+
+  /**
+   * Envia um arquivo para um endpoint.
+   *
+   * @async
+   * @method
+   * @param {string} token - O token de autenticação.
+   * @param {string} telefone - O número de telefone de destino do arquivo.
+   * @param {any} arquivo - O arquivo a ser enviado.
+   * @returns {Promise<boolean>} Uma Promise que resolve para `true` se o arquivo for enviado com sucesso, `false` caso contrário.
+   */
+  async enviarArquivo(token: string, telefone: string, arquivo: any): Promise<boolean> {
+    const url = import.meta.env.VITE_ENDPOINT_ENVAR_ARQUIVO; // Altere a URL conforme necessário
+
+    const formData = new FormData();
+    formData.append('token', token);
+    formData.append('telefone', telefone);
+    formData.append('arquivo', arquivo);
+
+    const options: RequestInit = {
+      method: 'POST',
+      body: formData,
+    };
+
+    try {
+      const response = await fetch(url, options);
+    
+      if (!response.ok) {
+        return false;
+      }
   
-  export default Factory;  
+      return true;
+
+    } catch (error) {
+      return false;
+    }
+  }
+}
+
+
+export default Factory;  

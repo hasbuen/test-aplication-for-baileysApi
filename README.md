@@ -9,10 +9,12 @@ Este projeto foi desenvolvido como parte de um desafio para aprovação a uma va
 
 ## Configuração do Ambiente
 
-Antes de executar o projeto, é necessário configurar o arquivo `.env` na raiz do projeto com a seguinte variável:
+Antes de executar o projeto, é necessário configurar o arquivo `.env` na raiz do projeto com as seguintes variáveis:
 
 ```typescript
-VITE_ENDPOINT=ENDERECO_API
+VITE_ENDPOINT_ENVAR_MENSAGEM=ENDPOINT_ENVIAR_MENSAGEM
+VITE_ENDPOINT_ENVAR_ARQUIVO=ENDPOINT_ENVIAR_ARQUIVO
+
 ```
 
 ## estruturação
